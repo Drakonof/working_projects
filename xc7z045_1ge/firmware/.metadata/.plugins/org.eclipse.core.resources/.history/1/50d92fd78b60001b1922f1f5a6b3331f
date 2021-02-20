@@ -1,0 +1,65 @@
+#include <stdio.h>
+
+#include "xil_cache.h"
+#include "xil_printf.h"
+#include "xstatus.h"
+#include "lwip/priv/tcp_priv.h"
+
+#include "platform.h"
+#include "udp_client.h"
+#include "si5324.h"
+
+extern volatile int TcpFastTmrFlag;
+extern volatile int TcpSlowTmrFlag;
+
+int main(void)
+{
+	int32_t status = XST_FAILURE;
+
+	struct netif netif;
+	memset(&netif, 0, sizeof(struct netif));
+
+	xil_printf("\r\n\r\n");
+	xil_printf("-----UDP Client Application-----\r\n");
+
+	status = program_si5324();
+    if (XST_SUCCESS != status) {
+    	xil_printf("Udp client: si5324 configuring failed\r\n");
+    	xil_printf("Udp client: status: %d\r\n", status);
+    	return XST_FAILURE;
+    }
+
+    status = init_udp(&netif);
+    if (XST_SUCCESS != status) {
+		xil_printf("Udp client: udp initialization failed\r\n");
+		xil_printf("Udp client: status: %d\r\n", status);
+		return XST_FAILURE;
+	}
+
+	/* print app header */
+	xil_printf("UDP client connecting to %s on port %s\r\n",
+				UDP_SERVER_IP_ADDRESS, UDP_PORT);
+		xil_printf("On Host: Run $iperf -s -i 5 -u\r\n\r\n");
+
+	/* start the application*/
+		init_udp_transfer();
+	xil_printf("\r\n");
+
+	while (1) {
+		if (TcpFastTmrFlag) {
+			tcp_fasttmr();
+			TcpFastTmrFlag = 0;
+		}
+		if (TcpSlowTmrFlag) {
+			tcp_slowtmr();
+			TcpSlowTmrFlag = 0;
+		}
+		xemacif_input(&netif);
+		transfer_udp_packet();
+	}
+
+	/* never reached */
+	cleanup_platform();
+
+	return 0;
+}

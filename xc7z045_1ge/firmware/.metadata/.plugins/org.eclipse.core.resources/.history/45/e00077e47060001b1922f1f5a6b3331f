@@ -1,0 +1,19 @@
+#ifndef UDP_CLIENT_H
+#define UDP_CLIENT_H
+
+#include "lwipopts.h"
+#include "xlwipconfig.h"
+#include "lwip/ip_addr.h"
+#include "lwip/err.h"
+#include "lwip/udp.h"
+#include "lwip/inet.h"
+#include "xil_printf.h"
+#include "platform.h"
+#include <sleep.h>
+
+
+#define UDP_PORT 8080
+#define UDP_SERVER_IP_ADDRESS "192.168.18.1"
+
+
+#endif /* __UDP_PERF_CLIENT_H_ */

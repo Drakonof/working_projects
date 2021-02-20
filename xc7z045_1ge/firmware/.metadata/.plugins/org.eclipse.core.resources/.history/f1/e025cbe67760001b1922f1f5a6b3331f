@@ -1,0 +1,67 @@
+################################################################################
+# Automatically-generated file. Do not edit!
+################################################################################
+
+# Add inputs and outputs from these tool invocations to the build variables 
+LD_SRCS += \
+../src\ (copy)/lscript.ld 
+
+C_SRCS += \
+../src\ (copy)/i2c_access.c \
+../src\ (copy)/main.c \
+../src\ (copy)/platform_zynq.c \
+../src\ (copy)/si5324.c \
+../src\ (copy)/udp_client.c 
+
+OBJS += \
+./src\ (copy)/i2c_access.o \
+./src\ (copy)/main.o \
+./src\ (copy)/platform_zynq.o \
+./src\ (copy)/si5324.o \
+./src\ (copy)/udp_client.o 
+
+C_DEPS += \
+./src\ (copy)/i2c_access.d \
+./src\ (copy)/main.d \
+./src\ (copy)/platform_zynq.d \
+./src\ (copy)/si5324.d \
+./src\ (copy)/udp_client.d 
+
+
+# Each subdirectory must supply rules for building sources it contributes
+src\ (copy)/i2c_access.o: ../src\ (copy)/i2c_access.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: ARM v7 gcc compiler'
+	arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"$@" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../udp_client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src (copy)/i2c_access.d" -MT"src\ (copy)/i2c_access.d" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src\ (copy)/main.o: ../src\ (copy)/main.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: ARM v7 gcc compiler'
+	arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"$@" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../udp_client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src (copy)/main.d" -MT"src\ (copy)/main.d" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src\ (copy)/platform_zynq.o: ../src\ (copy)/platform_zynq.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: ARM v7 gcc compiler'
+	arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"$@" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../udp_client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src (copy)/platform_zynq.d" -MT"src\ (copy)/platform_zynq.d" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src\ (copy)/si5324.o: ../src\ (copy)/si5324.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: ARM v7 gcc compiler'
+	arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"$@" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../udp_client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src (copy)/si5324.d" -MT"src\ (copy)/si5324.d" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+src\ (copy)/udp_client.o: ../src\ (copy)/udp_client.c
+	@echo 'Building file: $<'
+	@echo 'Invoking: ARM v7 gcc compiler'
+	arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"$@" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I../../udp_client_bsp/ps7_cortexa9_0/include -MMD -MP -MF"src (copy)/udp_client.d" -MT"src\ (copy)/udp_client.d" -o "$@" "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
+
